@@ -3,7 +3,7 @@ class CreateArticles < ActiveRecord::Migration[5.2]
     create_table :articles do |t|
       t.text        :text
       t.text        :image
-      t.inteder
+      t.integer
       t.timestamps null: true
     end
   end
