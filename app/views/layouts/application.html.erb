@@ -51,26 +51,25 @@
                   <!-- Collect the nav links, forms, and other content for toggling -->
                   <div class="collapse navbar-collapse navbar-def" id="bs-example-navbar-collapse-1">
 
-                      <ul class="nav navbar-nav navbar-right">
-                        <li>
+                      <div class="nav navbar-nav navbar-right">
+                        <div style="padding: auto 30px; display: inline-block;">
                           <a href="/articles"><i class="fa fa-home"></i> Home</a>
-                        </li>
+                        </div>
                         <% if user_signed_in? %>
-                          <li>
+                          <div style="padding: auto 30px; display: inline-block;">
+                            <a href="/users/<%= current_user.id %>"><i class="fa fa-bookmark"></i> MY PAGE</a>
+                          </div>
+                          <div style="padding: auto 30px; display: inline-block;">
                             <a href="/articles/new"><i class="fa fa-bookmark"></i> POST</a>
-                          </li>
-                          <li>
-                            <%= link_to "LOG OUT", destroy_user_session_path, method: :delete %>
-                          </li>
+                          </div>
+                          <div style="padding: auto 30px; display: inline-block;">
+                            <i class="fa fa-bookmark"></i><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %>
+                          </div>
                         <% else %>
-                          <li>
-                            <%= link_to "LOG IN", new_user_session_path, class: 'post' %>
-                          </li>
-                          <li>
-                            <%= link_to "SIGN UP", new_user_registration_path, class: 'post' %>
-                          </li>
+                            <i class="fa fa-bookmark"></i><%= link_to "LOG IN", new_user_session_path, class: 'post' %>
+                            <i class="fa fa-bookmark"></i><%= link_to "SIGN UP", new_user_registration_path, class: 'post' %>
                         <% end %>
-                      </ul>
+                      </div>
                   </div>
                 </div>
             </nav>

@@ -14,24 +14,35 @@
         <div class="container about-sec">
           <header class="block-heading cleafix">
             <div class="title-page">
-              <p class="main-header">name</p>
+              <p class="main-header"><%= article.user.name %></p>
               <p class="sub-header"><%= article.title %></p>
               <p class="sub-header"><%= article.created_at %></p>
             </div>
           </header>
           <br><br><br>
           <div class="divide50"></div>
+          <div class="container">
             <div class="row">
-              <% if article.image? %>
-              <div class="col-md-3 text-center">
+              <div class="col-sm-4">
+                <% if article.image? %>
                   <image src="<%= article.image %>">
                   </image>
                 <% end %>
               </div>
-              <div class="col-md-8 text-center">
+              <div class="col-sm-4">
                   <%= simple_format(article.text) %>
               </div>
+              <div class="col-sm-4">
+                <div class="article--btns">
+                  <%= link_to 'DETAIL', "/articles/#{article.id}", method: :get, class: "btn btn-default" %>
+                  <% if user_signed_in? && current_user.id == article.user_id %>
+                    <%= link_to 'DELETE', "/articles/#{article.id}", method: :delete, data: { confirm: "記事を削除します。よろしいですか？"}, class: "btn btn-default" %>
+                    <%= link_to 'EDIT', "/articles/#{article.id}/edit", method: :get, class: "btn btn-default" %>
+                  <% end %>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
         <hr size="30">
     </div>

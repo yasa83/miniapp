@@ -1,0 +1,33 @@
+<div id="wrapper">
+  <h1 class="col-sm-4 col-sm-offset-1"><%= @name%>'s PAGE</h1>
+  <% @articles.each do |article| %>
+    <div id="about" class="about-us">
+        <div class="container about-sec">
+          <header class="block-heading cleafix">
+            <div class="title-page">
+              <p class="main-header"><%= @name %></p>
+              <p class="sub-header"><%= article.title %></p>
+              <p class="sub-header"><%= article.created_at %></p>
+            </div>
+          </header>
+          <br><br><br>
+          <div class="divide50"></div>
+            <div class="row">
+              <% if article.image? %>
+              <div class="col-md-3 text-center">
+                  <image src="<%= article.image %>">
+                  </image>
+                <% end %>
+              </div>
+              <div class="col-md-8 text-center">
+                  <%= simple_format(article.text) %>
+              </div>
+            </div>
+        </div>
+        <hr size="20">
+    </div>
+  <% end %>
+  <%= paginate(@articles) %>
+</div>
+
+
